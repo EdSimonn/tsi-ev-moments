@@ -1,10 +1,13 @@
 <script setup>
-defineProps({
-  limit: Number,
-  showButton: {
-    type: Boolean,
-    default: false,
-  },
+import { ref, onMounted } from "vue";
+
+const user = ref({ fullname: "John Doe" });
+
+onMounted(() => {
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  if (loggedInUser) {
+    user.value.fullname = loggedInUser.fullname;
+  }
 });
 </script>
 
@@ -12,7 +15,7 @@ defineProps({
   <div class="py-8 md:px-16 px-8">
     <div class="flex justify-between items-center">
       <div>
-        <h2 class="text-3xl font-bold">Welcome John Doe,</h2>
+        <h2 class="text-3xl font-bold">Welcome {{ user.fullname }},</h2>
         <p class="text-sm">Here are items in your eventful moment bucket.</p>
       </div>
       <button
