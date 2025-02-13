@@ -9,8 +9,8 @@ const route = useRoute();
   <nav class="bg-teal-700 text-white md:px-16 px-8 py-4 flex justify-between">
     <h1 class="font-bold">Eventful Moments.</h1>
     <div>
-      <template v-if="route.path === '/'">
-        <RouterLink to="/login" class="mr-4">Login</RouterLink>
+      <template v-if="route.path === '/' || route.path === '/register'">
+        <RouterLink to="/" class="mr-4">Login</RouterLink>
         <RouterLink to="/register">Register</RouterLink>
       </template>
       <template v-else>
